@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.soheejjang.board.service.mapper.BoardMapper">
+    
+    <select id="selectBoardList" parameterType="com.soheejjang.board.service.BoardDVO" resultType="com.soheejjang.board.service.BoardDVO">
+        select * from board
+    </select>
+    
+    <insert id="insertBoard">
+        insert into
+        board(
+            title
+            , content
+            , writer
+            , date)
+        values(
+            #{title}
+            , #{content}
+            , #{writer}
+            , now())
+    </insert>
+    
+    <update id="updateBoard">
+        update board set
+            title = #{title}
+            , content = #{content}
+            , writer = #{writer}
+            , date = now()
+        where
+            no = #{no}
+    </update>
+    
+    <delete id="deleteBoard">
+        delete from board
+        where
+            no = #{no}
+    </delete>
+    
+    <select id="selectBoardByNo" parameterType="com.soheejjang.board.service.BoardDVO" resultType="com.soheejjang.board.service.BoardDVO">
+        select * from board
+        where
+            no = #{no}
+    </select>
+</mapper>
